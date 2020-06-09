@@ -1,0 +1,8 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<form action="/addquestion/" method="POST">
+    {% csrf_token %}
+    <input type="text" name="q" id="" placeholder="Enter the question">
+    <input type="submit" value="add_Question"> 
+</form>
+{% endblock %}

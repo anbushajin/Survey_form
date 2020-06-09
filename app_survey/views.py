@@ -2,7 +2,6 @@ from django.shortcuts import render,  redirect
 from django.http import HttpResponse
 from .models import *
 
-# Create your views here.
 ques=0
 name=0
 title=0
@@ -15,8 +14,18 @@ def dashboard (request):
     for i in obj:
         dict = {"qtn" : i.qtn, "name" : i.name, "title" : i.title, "multiple" :  i.multiple, "choice" : i.choice, "mandatory" : i.mandatory}
         lst.append(dict)
-    print("List :",lst)
     return render (request,"dashboard.html",{"lst":lst})
+
+def addquestion(request):
+    if request.method == 'GET':
+        return render (request, "question.html")
+    elif request.method == 'POST':
+        question = request.POST['q']
+        ques = Question (question = question)
+        ques.save()
+        return redirect (dashboard)
+
+
 
 
 
@@ -37,9 +46,6 @@ def question(request):
         name = request.POST['name']
         title= request.POST['title']
         multi= int(request.POST['radio'])
-        
-        
-        print("###########","Name :",name, "title ;", title, "Radio :", multi)
     return render(request, "survey1.html", {"name": name, "title" : title, "multi":multi,"ques":ques})
 
 
@@ -50,9 +56,7 @@ def survey(request):
         if multi is 0:
             choice = request.POST['c1']
         madinatory = request.POST['m']
-        print("################","ques",ques,name)
         q=Survey(qtn = ques, name = name, title = title, multiple =  multi, choice = choice, mandatory = madinatory )
         q.save()
         print(choice,":",type(choice))
-
         return redirect (dashboard)
