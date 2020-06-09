@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    <a href="home/"><input type="submit" value="Click here for new survey" ></a><br><br><br>
+
+    <table border="1">
+        <tr>
+            <th>question</th>
+            <th>name</th>
+            <th>title</th>
+            <th>multiple</th>
+            <th>choice</th>
+            <th>mandatory</th>
+        </tr>
+        {% for i in lst%}
+        <tr>
+            <td>{{i.qtn}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.title}}</td>
+            <td>{{i.multiple}}</td>
+            <td>{{i.choice}}</td>
+            <td>{{i.mandatory}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% endblock %}
+</body>
+</html>

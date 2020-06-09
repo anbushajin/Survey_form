@@ -1,0 +1,15 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<form action="/question/" method="POST">
+    {% csrf_token %}
+    <button ><h1>Question : {{ques}}?</h1></button><br><br>
+    Name : <input type="text" name="name" placeholder="Please enter your name"><br><br>
+    Title: <input  type="text" name="title" id="" placeholder="Please give a title for the question" required><br><br>
+        Multiple choice: 
+        <input id="r1"   type="radio" name="radio" value=1>
+        <label for="r1">Yes</label>
+        <input id="r2" type="radio" name="radio" value=0>
+        <label id="r2">No</label>
+    <input type="submit" value="confirm"> 
+</form>
+{% endblock %}

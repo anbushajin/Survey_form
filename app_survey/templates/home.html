@@ -1,0 +1,16 @@
+{% extends "dashboard.html" %}
+    {% block content %}
+    <form action="/home/" method="POST">
+        {% csrf_token %}
+        <h4>Please select the question</h4>
+        <select name="qty" id="">  
+            <option value="">----</option>
+            {% for q in qstn %} 
+            <option value="{{q}}">{{q}}</option>
+            {% endfor %}
+            <input type="submit">
+        </select>
+    </form>
+
+    
+     {% endblock %}

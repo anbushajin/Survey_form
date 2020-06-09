@@ -1,0 +1,27 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<form action="/survey/" method="POST">
+    {% csrf_token %}
+    <button ><h1>Question : {{ques}}?</h1></button><br><br>
+
+    Title: <input  type="text" name="title" id="" placeholder={{title}} disabled><br>
+        <h3>Multiple choice: {{multi}}</h3><br><br>
+        {% if multi is 1 %}
+        Choices : Please enter the survey data <br><br>
+        1. <input type="text" name="c1" id=""><br><br>
+        2. <input type="text" name="c2" id=""><br><br>
+        3. <input type="text" name="c3" id=""><br><br>
+        4. <input type="text" name="c4" id=""><br><br>
+        {% elif multi is 0 %}
+        Choices : Please enter the survey data 
+        1. <input type="text" name="c1" id=""><br><br>
+        {% endif %}
+        Mandatory 
+        <input id="r1"   type="radio" name="m" value=1>
+        <label for="r1">Yes</label>
+        <input id="r2" type="radio" name="m" value=0>
+        <label id="r2">No</label>
+
+    <input type="submit"> 
+</form>
+{% endblock %}
